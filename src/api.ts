@@ -23,3 +23,10 @@ export const getHistory = async (sessionId: string): Promise<{ history: Message[
 export const clearSession = async (sessionId: string): Promise<void> => {
   await api.delete(`/chat/${sessionId}`);
 };
+
+export const getArticles = async (): Promise<{
+  articles: { title: string }[];
+}> => {
+  const response = await api.get("/articles");
+  return response.data;
+};
