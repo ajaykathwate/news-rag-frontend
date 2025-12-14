@@ -1,4 +1,4 @@
-import React, { useState, FormEvent } from 'react';
+import React, { useState, type FormEvent } from "react";
 
 interface Props {
   onSend: (text: string) => void;
@@ -6,14 +6,14 @@ interface Props {
 }
 
 export const ChatInput: React.FC<Props> = ({ onSend, disabled }) => {
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState("");
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     if (!input.trim() || disabled) return;
-    
+
     onSend(input);
-    setInput('');
+    setInput("");
   };
 
   return (
@@ -26,7 +26,11 @@ export const ChatInput: React.FC<Props> = ({ onSend, disabled }) => {
         disabled={disabled}
         className="chat-input"
       />
-      <button type="submit" disabled={disabled || !input.trim()} className="send-btn">
+      <button
+        type="submit"
+        disabled={disabled || !input.trim()}
+        className="send-btn"
+      >
         Send
       </button>
     </form>
